@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Node
+node_modules/
+web/dist/
+.vite/
+
+# Env / secrets
+.env
+.env.local
+*.pem
+*.key
+
+# Data
+data/uploads/*
+!data/uploads/.gitkeep
+backups/
+
+# IDE
+.idea/
+.vscode/
+.DS_Store
+
+*.db
+*.sqlite
+smoke_*.db
+
+*.db-journal
+
+*.tsbuildinfo
+
+*.db-wal
+*.db-shm
+
+# Playwright
+web/test-results/
+web/playwright-report/
+web/blob-report/
+
+# Generated screenshots
+screenshots/

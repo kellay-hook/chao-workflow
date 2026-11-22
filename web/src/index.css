@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --brand-50: #eef2ff;
+  --brand-100: #e0e7ff;
+  --brand-500: #6366f1;
+  --brand-600: #4f46e5;
+  --ink-950: #0b1020;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-[#f5f7fb] text-slate-900 antialiased;
+  font-family: Inter, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  background-image:
+    radial-gradient(1100px 560px at 15% -8%, rgba(99, 102, 241, 0.10), transparent 58%),
+    radial-gradient(900px 520px at 100% 0%, rgba(139, 92, 246, 0.08), transparent 55%);
+  background-attachment: fixed;
+}
+
+::selection {
+  @apply bg-indigo-100 text-indigo-900;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-slate-300;
+}
+
+@layer components {
+  .card {
+    @apply rounded-[20px] border border-slate-200/80 bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04),0_18px_44px_-28px_rgba(15,23,42,0.20)];
+  }
+  .card-hover {
+    @apply transition duration-200 hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-[0_2px_4px_rgba(15,23,42,0.04),0_22px_48px_-24px_rgba(79,70,229,0.28)];
+  }
+  .btn {
+    @apply inline-flex h-10 items-center justify-center gap-2 rounded-xl px-4 text-[13px] font-semibold transition duration-150 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-sm shadow-indigo-200/80 hover:from-indigo-500 hover:to-violet-500 hover:shadow-md hover:shadow-indigo-200;
+  }
+  .btn-secondary {
+    @apply btn border border-slate-200 bg-white text-slate-700 shadow-sm shadow-slate-200/50 hover:border-slate-300 hover:bg-slate-50;
+  }
+  .btn-danger {
+    @apply btn bg-rose-600 text-white shadow-sm shadow-rose-200 hover:bg-rose-500;
+  }
+  .input {
+    @apply w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100/80;
+  }
+  .label {
+    @apply mb-1.5 block text-[12px] font-semibold text-slate-600;
+  }
+  .hint {
+    @apply mt-1 text-[11px] leading-relaxed text-slate-400;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold;
+  }
+  .nav-link {
+    @apply flex items-center gap-3 rounded-xl px-3 py-2.5 text-[13px] font-medium text-slate-300/90 transition hover:bg-white/[0.07] hover:text-white;
+  }
+  .nav-link-active {
+    @apply bg-gradient-to-r from-indigo-500/25 to-violet-500/10 text-white shadow-[inset_0_0_0_1px_rgba(129,140,248,0.25)];
+  }
+  .page-eyebrow {
+    @apply text-[11px] font-bold uppercase tracking-[0.16em] text-indigo-600;
+  }
+  .page-title {
+    @apply mt-1 text-[26px] font-semibold leading-tight tracking-[-0.02em] text-slate-950;
+  }
+  .page-desc {
+    @apply mt-1.5 max-w-3xl text-sm leading-relaxed text-slate-500;
+  }
+  .section-title {
+    @apply text-[15px] font-semibold tracking-[-0.01em] text-slate-900;
+  }
+  .section-desc {
+    @apply mt-1 text-xs leading-relaxed text-slate-500;
+  }
+  .tab-btn {
+    @apply border-b-2 border-transparent px-4 py-2.5 text-[13px] font-semibold text-slate-500 transition hover:text-slate-800;
+  }
+  .tab-btn-active {
+    @apply border-indigo-500 text-indigo-600;
+  }
+  .table-shell {
+    @apply overflow-x-auto rounded-[20px] border border-slate-200/80 bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04),0_18px_44px_-28px_rgba(15,23,42,0.20)];
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
