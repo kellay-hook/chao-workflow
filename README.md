@@ -1,5 +1,9 @@
 # FlowMind
 
+<p align="center">
+  <img src="docs/screenshots/desktop-02-dashboard.jpg" alt="FlowMind 仪表盘" width="100%" />
+</p>
+
 自托管的自动化工作流与 AI Agent 平台。可视化编排 DAG，内置 RAG 知识库、多 Agent 协作、工具审批与运行审计，适合在本地或私有云部署。
 
 ## 已实现能力
@@ -25,6 +29,66 @@
 - HTTP 工具 OAuth2 Authorization Code：加密保存 client secret / access / refresh token，自动注入 Bearer token
 - 代码节点独立 Runner 沙箱
 - Docker Compose 部署，OTel / Langfuse 可选接入
+
+## 界面预览
+
+> 截图由 Playwright 自动生成，点击图片可查看原图。默认演示账号：`demo@flowmind.dev / password123`。
+
+### 登录与工作流
+
+| 登录 | 工作流列表 |
+| :---: | :---: |
+| [![登录](docs/screenshots/desktop-01-login.jpg)](docs/screenshots/desktop-01-login.jpg) | [![工作流列表](docs/screenshots/desktop-03-workflows.jpg)](docs/screenshots/desktop-03-workflows.jpg) |
+
+| 创建工作台 | 工作流画布 |
+| :---: | :---: |
+| [![创建工作台](docs/screenshots/desktop-04-workflow-create.jpg)](docs/screenshots/desktop-04-workflow-create.jpg) | [![工作流画布](docs/screenshots/desktop-05-workflow-editor.jpg)](docs/screenshots/desktop-05-workflow-editor.jpg) |
+
+### 运行、审批与知识库
+
+| 运行记录 | 运行详情 |
+| :---: | :---: |
+| [![运行记录](docs/screenshots/desktop-06-runs.jpg)](docs/screenshots/desktop-06-runs.jpg) | [![运行详情](docs/screenshots/desktop-07-run-detail.jpg)](docs/screenshots/desktop-07-run-detail.jpg) |
+
+| 审批中心 | 知识库文档 |
+| :---: | :---: |
+| [![审批中心](docs/screenshots/desktop-08-approvals.jpg)](docs/screenshots/desktop-08-approvals.jpg) | [![知识库文档](docs/screenshots/desktop-09-knowledge-documents.jpg)](docs/screenshots/desktop-09-knowledge-documents.jpg) |
+
+| 检索测试 | Agent 配置 |
+| :---: | :---: |
+| [![检索测试](docs/screenshots/desktop-10-knowledge-search.jpg)](docs/screenshots/desktop-10-knowledge-search.jpg) | [![Agent 配置](docs/screenshots/desktop-11-agents-config.jpg)](docs/screenshots/desktop-11-agents-config.jpg) |
+
+| Agent 调试 | 工具管理 |
+| :---: | :---: |
+| [![Agent 调试](docs/screenshots/desktop-12-agents-debug.jpg)](docs/screenshots/desktop-12-agents-debug.jpg) | [![工具管理](docs/screenshots/desktop-13-tools.jpg)](docs/screenshots/desktop-13-tools.jpg) |
+
+### 工具、MCP 与插件
+
+| MCP 服务 | OAuth 连接 |
+| :---: | :---: |
+| [![MCP 服务](docs/screenshots/desktop-14-tools-mcp.jpg)](docs/screenshots/desktop-14-tools-mcp.jpg) | [![OAuth 连接](docs/screenshots/desktop-15-tools-oauth.jpg)](docs/screenshots/desktop-15-tools-oauth.jpg) |
+
+| 插件市场 | 模型设置 |
+| :---: | :---: |
+| [![插件市场](docs/screenshots/desktop-16-plugins.jpg)](docs/screenshots/desktop-16-plugins.jpg) | [![模型设置](docs/screenshots/desktop-17-settings-models.jpg)](docs/screenshots/desktop-17-settings-models.jpg) |
+
+### 成员与角色权限
+
+| 成员管理 | 角色权限矩阵 |
+| :---: | :---: |
+| [![成员管理](docs/screenshots/desktop-18-settings-members.jpg)](docs/screenshots/desktop-18-settings-members.jpg) | [![角色权限矩阵](docs/screenshots/desktop-19-settings-permissions.jpg)](docs/screenshots/desktop-19-settings-permissions.jpg) |
+
+### 移动端
+
+| 仪表盘 | 工作流 | 知识库 |
+| :---: | :---: | :---: |
+| [![移动端仪表盘](docs/screenshots/mobile-02-dashboard.jpg)](docs/screenshots/mobile-02-dashboard.jpg) | [![移动端工作流](docs/screenshots/mobile-03-workflows.jpg)](docs/screenshots/mobile-03-workflows.jpg) | [![移动端知识库](docs/screenshots/mobile-04-knowledge.jpg)](docs/screenshots/mobile-04-knowledge.jpg) |
+
+| Agent | 工具 / MCP | 插件 |
+| :---: | :---: | :---: |
+| [![移动端 Agent](docs/screenshots/mobile-05-agents.jpg)](docs/screenshots/mobile-05-agents.jpg) | [![移动端工具](docs/screenshots/mobile-06-tools.jpg)](docs/screenshots/mobile-06-tools.jpg) | [![移动端插件](docs/screenshots/mobile-07-plugins.jpg)](docs/screenshots/mobile-07-plugins.jpg) |
+
+截图命令见下方「页面截图」章节。
 
 ## 快速上手（4 步）
 
@@ -306,6 +370,16 @@ npm run screenshots
 
 ```powershell
 $env:SCREENSHOT_DIR="D:\FlowMind-Screenshots"
+npm run screenshots
+```
+
+重新生成 README 中使用的 GitHub 预览图（JPEG，输出到 `docs/screenshots/`）：
+
+```powershell
+cd D:\AWS-AI-Agent\web
+$env:SCREENSHOT_DIR="D:\AWS-AI-Agent\docs\screenshots"
+$env:SCREENSHOT_FORMAT="jpeg"
+$env:SCREENSHOT_QUALITY="82"
 npm run screenshots
 ```
 

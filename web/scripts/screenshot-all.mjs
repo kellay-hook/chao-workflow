@@ -6,6 +6,9 @@ import { fileURLToPath } from 'node:url'
 const base = process.env.FLOWMIND_WEB_URL || 'http://localhost:5180'
 const webRoot = path.dirname(path.dirname(fileURLToPath(import.meta.url)))
 const outDir = process.env.SCREENSHOT_DIR || path.resolve(webRoot, '..', 'screenshots')
+const imageFormat = process.env.SCREENSHOT_FORMAT === 'jpeg' ? 'jpeg' : 'png'
+const imageQuality = Number(process.env.SCREENSHOT_QUALITY || 82)
+const imageExt = imageFormat === 'jpeg' ? 'jpg' : 'png'
 const desktopViewport = { width: 1440, height: 1000 }
 const mobileViewport = { width: 390, height: 844 }
 const failures = []
@@ -25,9 +28,13 @@ async function stabilize(page) {
 async function shot(page, name) {
   try {
     await stabilize(page)
-    const file = path.join(outDir, `${name}.png`)
-    await page.screenshot({ path: file, fullPage: true })
-    console.log(`✓ ${name}.png`)
+    const file = path.join(outDir, `${name}.${imageExt}`)
+    await page.screenshot({
+      path: file,
+      fullPage: true,
+      ...(imageFormat === 'jpeg' ? { type: 'jpeg', quality: imageQuality } : {}),
+    })
+    console.log(`✓ ${name}.${imageExt}`)
   } catch (error) {
     failures.push(name)
     console.error(`✗ ${name}:`, error instanceof Error ? error.message : error)
@@ -63,7 +70,7 @@ async function captureDesktop() {
   await shot(page, 'desktop-04-workflow-create')
 
   await page.goto(`${base}/workflows`, { waitUntil: 'networkidle' })
-  await page.locator('a[href^="/workflows/"]').first().click()
+  await page.locator('a[href^="/workflows/"]:not([href*="/new"])').first().click()
   await page.waitForTimeout(1400)
   await shot(page, 'desktop-05-workflow-editor')
 

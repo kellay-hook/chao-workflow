@@ -47,5 +47,5 @@ web/test-results/
 web/playwright-report/
 web/blob-report/
 
-# Generated screenshots
-screenshots/
+# Generated screenshots (local only)
+/screenshots/
